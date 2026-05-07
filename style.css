@@ -1,0 +1,55 @@
+body {
+    background-color: #121212;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.game-container {
+    text-align: center;
+    width: 90%;
+    max-width: 500px;
+}
+
+.card {
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 15px;
+    border: 2px solid #333;
+    margin-bottom: 20px;
+}
+
+#question-img {
+    width: 100px; /* Sengaja dibuat kecil/potongan */
+    height: 100px;
+    object-fit: contain;
+    background: #2a2a2a;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#full-img {
+    width: 100%;
+    margin-top: 15px;
+    border-radius: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+#btn-reveal { background-color: #5865F2; color: white; }
+#btn-next { background-color: #3ba55c; color: white; }

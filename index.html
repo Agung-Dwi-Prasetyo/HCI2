@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI Trivia - Peminatan SPICE</title>
+    <link rel="stylesheet" href="trivia-style.css">
+</head>
+<body>
+
+    <div class="game-container">
+        <h1>TEBAK UI APLIKASI</h1>
+        <p>Potongan UI ini milik aplikasi apa?</p>
+
+        <div class="card">
+            <!-- Gambar potongan UI -->
+            <img id="question-img" src="img/discord-icon.png" alt="Tebak ini apa">
+            
+            <!-- Jawaban yang awalnya tersembunyi -->
+            <div id="answer-section" class="hidden">
+                <h2 id="answer-name">DISCORD</h2>
+                <img id="full-img" src="img/discord-full.png" alt="Full UI">
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="btn-reveal">CEK JAWABAN</button>
+            <button id="btn-next" class="hidden">SOAL BERIKUTNYA</button>
+        </div>
+    </div>
+
+    <script src="trivia-script.js"></script>
+</body>
+</html>
