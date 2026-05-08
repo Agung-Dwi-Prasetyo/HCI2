@@ -15,7 +15,11 @@ const dataSoal = [
     { 
         icon: 'LINK_RAW_GITHUB_SPOTIFY_ICON', 
         nama: 'SPOTIFY' 
-    }
+    },
+    { 
+        icon: 'zoomchat.png', 
+        nama: 'ZOOM' 
+    },
 ];
 
 let indexSekarang = 0;
