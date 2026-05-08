@@ -1,88 +1,93 @@
 :root {
     --ui-blue-royal: #1946BA;
     --ui-yellow-bright: #FFE300;
+    --ui-blue-dark: #0A1F5E;
     --ui-white: #FFFFFF;
 }
 
 body {
     background-color: var(--ui-blue-royal);
     margin: 0;
-    padding: 0;
-    overflow: hidden; /* Penting agar elemen tidak tembus keluar */
-    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
-/* Container Background */
 #bg-bounce-container {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1; /* Di belakang game */
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    z-index: -1;
     pointer-events: none;
 }
 
-/* Gaya Elemen yang Mantul */
 .bouncing-item {
     position: absolute;
-    width: 80px;
+    width: 300px;
     height: auto;
-    /* Gunakan background: none agar tidak ada warna sama sekali */
-    background: none !important; 
-    background-color: transparent !important;
-    border: none !important;
-    /* Tambahin ini biar gak ada bayangan putih yang keliatan kayak kotak */
-    box-shadow: none !important; 
-    /* Pastikan tidak ada padding yang bikin area putih di sekitar gambar */
-    padding: 0 !important;
+    background: transparent !important;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
 }
 
-/* Style Kartu Game (Tetap di tengah) */
 .game-container {
-    background: rgba(25, 70, 186, 0.9); /* Sedikit transparan agar elemen belakang terlihat */
+    background: rgba(10, 31, 94, 0.9);
     padding: 30px;
-    border-radius: 20px;
+    border-radius: 25px;
     text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
     z-index: 10;
-    width: 350px;
+    width: 380px;
+    border: 2px solid var(--ui-yellow-bright);
+    animation: fadeIn 0.5s ease-out;
 }
 
-h1 { color: var(--ui-yellow-bright); text-transform: uppercase; }
+h1 { color: var(--ui-yellow-bright); margin: 0; font-size: 24px; text-transform: uppercase; }
+p { color: white; opacity: 0.8; margin-top: 5px; }
 
 .card {
     background: white;
     padding: 20px;
-    border-radius: 15px;
+    border-radius: 20px;
     margin: 20px 0;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-#question-img {
-    width: 80px;
-    background: none; /* Hilangkan background */
-    border: none; /* Hilangkan border kalau ganggu */
+#question-img { 
+    width: 100px; 
+    height: 100px;
+    object-fit: contain;
+    border-radius: 50%; 
+    border: 4px solid var(--ui-yellow-bright);
+    background: #eee;
 }
-#full-img { width: 100%; border-radius: 10px; margin-top: 10px; }
+
+#answer-section h2 { color: var(--ui-blue-dark); margin: 10px 0; font-size: 22px; }
+#full-img { width: 100%; border-radius: 10px; border: 1px solid #ccc; }
 
 .hidden { display: none; }
 
 button {
-    padding: 12px 25px;
-    border-radius: 25px;
+    padding: 15px 30px;
+    border-radius: 50px;
     border: none;
     font-weight: bold;
     cursor: pointer;
+    text-transform: uppercase;
+    transition: transform 0.2s, background 0.3s;
 }
 
-#btn-reveal { background: #000; color: #fff; }
-#btn-next { background: var(--ui-yellow-bright); color: #000; }
-img {
-    background: transparent !important;
-    background-color: rgba(0,0,0,0) !important;
-    border: none !important;
+#btn-reveal { background: black; color: white; }
+#btn-next, #btn-reset { background: var(--ui-yellow-bright); color: var(--ui-blue-dark); }
+button:hover { transform: scale(1.08); }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }

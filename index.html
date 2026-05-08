@@ -3,30 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UI Trivia - Peminatan SPICE</title>
+    <title>UI Trivia - SPICE Vokasi UI</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    s<div id="bg-bounce-container"></div>
 
-    <div class="game-container">
+    <div id="bg-bounce-container"></div>
+
+    <div class="game-container" id="game-card">
         <h1>TEBAK UI APLIKASI</h1>
-        <p>Potongan UI ini milik aplikasi apa?</p>
+        <p id="sub-title">Potongan UI ini milik aplikasi apa?</p>
 
         <div class="card">
-            <!-- Gambar potongan UI -->
-            <img id="question-img" src="img/discord-icon.png" alt="Tebak ini apa">
+            <img id="question-img" src="" alt="Tebak ini apa">
             
-            <!-- Jawaban yang awalnya tersembunyi -->
             <div id="answer-section" class="hidden">
-                <h2 id="answer-name">DISCORD</h2>
-                <img id="full-img" src="img/discord-full.png" alt="Full UI">
+                <h2 id="answer-name">NAMA APLIKASI</h2>
+                <img id="full-img" src="" alt="Full UI Screenshot">
             </div>
         </div>
 
         <div class="controls">
             <button id="btn-reveal">CEK JAWABAN</button>
-            <button id="btn-next" class="hidden">SOAL BERIKUTNYA</button>
+            <button id="btn-next" class="hidden">NEXT SOAL</button>
         </div>
     </div>
 
