@@ -8,6 +8,10 @@ const dataSoal = [
         icon: 'LINK_RAW_GITHUB_INSTAGRAM_ICON', 
         nama: 'INSTAGRAM' 
     },
+     { 
+        icon: 'wamic.png', 
+        nama: 'WHATSAPP' 
+    },
     { 
         icon: 'LINK_RAW_GITHUB_SPOTIFY_ICON', 
         nama: 'SPOTIFY' 
