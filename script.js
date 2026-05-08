@@ -1,62 +1,27 @@
 // --- 1. DATA SOAL ---
 const dataSoal = [
-    { 
-        icon: 'dcmic.png', 
-        nama: 'DISCORD' 
-    },
-    { 
-        icon: 'igchat.png', 
-        nama: 'INSTAGRAM' 
-    },
-    { 
-        icon: 'zoomau.png', 
-        nama: 'ZOOM' 
-    },
-     { 
-        icon: 'wamic.png', 
-        nama: 'WHATSAPP' 
-    },
-     { 
-        icon: 'dcchat.png', 
-        nama: 'DISCORD' 
-    },
-     { 
-        icon: 'igtelp.png', 
-        nama: 'INSTAGRAM' 
-    },
-
-    { 
-        icon: 'zoomchat.png', 
-        nama: 'ZOOM' 
-    }, 
-    { 
-        icon: 'watelp.png', 
-        nama: 'WHATSAPP' 
-    },
-     { 
-        icon: 'discordtelp.png', 
-        nama: 'DISCORD' 
-    },
-     { 
-        icon: 'wachat.png', 
-        nama: 'WHATSAPP' 
-    },
-     { 
-        icon: 'arsipwa.png', 
-        nama: 'WHATSAPP' 
-    },
+    { icon: 'dcmic.png', nama: 'DISCORD' },
+    { icon: 'igchat.png', nama: 'INSTAGRAM' },
+    { icon: 'zoomau.png', nama: 'ZOOM' },
+    { icon: 'wamic.png', nama: 'WHATSAPP' },
+    { icon: 'dcchat.png', nama: 'DISCORD' },
+    { icon: 'igtelp.png', nama: 'INSTAGRAM' },
+    { icon: 'zoomchat.png', nama: 'ZOOM' }, 
+    { icon: 'watelp.png', nama: 'WHATSAPP' },
+    { icon: 'discordtelp.png', nama: 'DISCORD' },
+    { icon: 'wachat.png', nama: 'WHATSAPP' },
+    { icon: 'arsipwa.png', nama: 'WHATSAPP' },
 ];
 
 let indexSekarang = 0;
 
 // --- 2. LOGIKA MUSIK ---
-// Deklarasi musik ditaruh di atas agar bisa dipakai di semua fungsi
 const music = document.getElementById('bgm');
 const musicBtn = document.getElementById('btn-music');
 let isPlaying = false;
 
 if (music) {
-    music.volume = 0.5; // Set volume 50%
+    music.volume = 0.5;
 }
 
 function toggleMusic() {
@@ -74,13 +39,13 @@ if (musicBtn) {
     musicBtn.onclick = toggleMusic;
 }
 
-// Musik otomatis jalan saat klik pertama di mana saja
+// Interaksi pertama untuk aktifkan audio (kebijakan browser)
 document.addEventListener('click', () => {
     if (!isPlaying && music) {
         music.play().then(() => {
             isPlaying = true;
             musicBtn.innerText = "🎵";
-        }).catch(err => console.log("Autoplay dicegah browser"));
+        }).catch(err => console.log("Autoplay dicegah"));
     }
 }, { once: true });
 
@@ -150,12 +115,11 @@ function showEnding() {
     };
 }
 
-initGame();
-
-// --- 4. LOGIKA BACKGROUND MANTUL ---
+// --- 4. LOGIKA BACKGROUND MANTUL (MOBILE FRIENDLY) ---
 const container = document.getElementById('bg-bounce-container');
 const bgImages = ['1.png', '2.png']; 
 const items = [];
+const isMobile = window.innerWidth < 480;
 
 if (container) {
     for (let i = 0; i < 12; i++) {
@@ -163,13 +127,18 @@ if (container) {
         img.src = bgImages[Math.floor(Math.random() * bgImages.length)];
         img.className = 'bouncing-item';
         container.appendChild(img);
+
+        const size = isMobile ? 50 : 80;
+        const speed = isMobile ? 2 : 4; // Lebih pelan di HP biar gak pusing
+
         items.push({
             el: img,
-            x: Math.random() * (window.innerWidth - 80),
-            y: Math.random() * (window.innerHeight - 80),
-            dx: (Math.random() - 0.5) * 4,
-            dy: (Math.random() - 0.5) * 4,
-            w: 80, h: 80
+            x: Math.random() * (window.innerWidth - size),
+            y: Math.random() * (window.innerHeight - size),
+            dx: (Math.random() - 0.5) * speed,
+            dy: (Math.random() - 0.5) * speed,
+            w: size, 
+            h: size
         });
     }
 }
@@ -178,11 +147,17 @@ function updateBounce() {
     items.forEach(item => {
         item.x += item.dx;
         item.y += item.dy;
+
+        // Cek tabrakan dinding
         if (item.x + item.w > window.innerWidth || item.x < 0) item.dx *= -1;
         if (item.y + item.h > window.innerHeight || item.y < 0) item.dy *= -1;
+
         item.el.style.left = item.x + 'px';
         item.el.style.top = item.y + 'px';
     });
     requestAnimationFrame(updateBounce);
 }
+
+// Jalankan Fungsi
+initGame();
 updateBounce();
