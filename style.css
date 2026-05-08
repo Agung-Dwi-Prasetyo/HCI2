@@ -30,9 +30,16 @@ body {
 /* Gaya Elemen yang Mantul */
 .bouncing-item {
     position: absolute;
-    width: 80px; /* Ukuran gambar karakter */
+    width: 80px;
     height: auto;
-    opacity: 0.8;
+    /* Gunakan background: none agar tidak ada warna sama sekali */
+    background: none !important; 
+    background-color: transparent !important;
+    border: none !important;
+    /* Tambahin ini biar gak ada bayangan putih yang keliatan kayak kotak */
+    box-shadow: none !important; 
+    /* Pastikan tidak ada padding yang bikin area putih di sekitar gambar */
+    padding: 0 !important;
 }
 
 /* Style Kartu Game (Tetap di tengah) */
@@ -55,7 +62,11 @@ h1 { color: var(--ui-yellow-bright); text-transform: uppercase; }
     margin: 20px 0;
 }
 
-#question-img { width: 80px; border-radius: 50%; border: 3px solid var(--ui-yellow-bright); }
+#question-img {
+    width: 80px;
+    background: none; /* Hilangkan background */
+    border: none; /* Hilangkan border kalau ganggu */
+}
 #full-img { width: 100%; border-radius: 10px; margin-top: 10px; }
 
 .hidden { display: none; }
@@ -70,3 +81,8 @@ button {
 
 #btn-reveal { background: #000; color: #fff; }
 #btn-next { background: var(--ui-yellow-bright); color: #000; }
+img {
+    background: transparent !important;
+    background-color: rgba(0,0,0,0) !important;
+    border: none !important;
+}

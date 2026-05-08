@@ -27,7 +27,7 @@ btnNext.addEventListener('click', () => {
 
 // --- LOGIKA ELEMEN MANTUL (BOUNCING ELEMENTS) ---
 const container = document.getElementById('bg-bounce-container');
-const images = ['karakter1.png', 'karakter2.png']; // Ganti dengan nama file fotomu
+const images = ['1.png', '2.png']; // Ganti dengan nama file fotomu
 const itemCount = 12; // Jumlah elemen yang mau dimunculin
 const items = [];
 
