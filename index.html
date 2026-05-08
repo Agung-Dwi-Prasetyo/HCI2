@@ -8,23 +8,27 @@
 </head>
 <body>
 
+    <!-- Area Background -->
     <div id="bg-bounce-container"></div>
 
+    <!-- Audio ditaruh di luar container utama -->
+    <audio id="bgm" loop>
+        <source src="bgm.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Tombol Musik ditaruh di luar agar fixed-nya aman -->
+    <button id="btn-music">🎵</button>
+
+    <!-- Container Utama Game -->
     <div class="game-container" id="game-card">
         <h1>TEBAK UI APLIKASI</h1>
         <p id="sub-title">Potongan UI ini milik aplikasi apa?</p>
 
         <div class="card">
-            <img id="question-img" src="" alt="Tebak ini apa">
-            <audio id="bgm" loop>
-    <source src="bgm.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-</audio>
-
-<!-- Tambahkan tombol kecil di pojok untuk Mute/Unmute (opsional tapi disarankan) -->
-<button id="btn-music" style="position: fixed; bottom: 20px; right: 20px; z-index: 100; border-radius: 50%; width: 50px; height: 50px; background: #FFE300; border: none; cursor: pointer;">
-    🎵
-</button>
+            <!-- Kosongkan alt agar tidak muncul teks saat gambar belum load -->
+            <img id="question-img" src="" alt="">
+            
             <div id="answer-section" class="hidden">
                 <h2 id="answer-name">NAMA APLIKASI</h2>
             </div>

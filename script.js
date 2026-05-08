@@ -16,16 +16,49 @@ const dataSoal = [
 
 let indexSekarang = 0;
 
-// --- 2. LOGIKA GAME ---
+// --- 2. LOGIKA MUSIK ---
+// Deklarasi musik ditaruh di atas agar bisa dipakai di semua fungsi
+const music = document.getElementById('bgm');
+const musicBtn = document.getElementById('btn-music');
+let isPlaying = false;
+
+if (music) {
+    music.volume = 0.5; // Set volume 50%
+}
+
+function toggleMusic() {
+    if (isPlaying) {
+        music.pause();
+        musicBtn.innerText = "🔇";
+    } else {
+        music.play();
+        musicBtn.innerText = "🎵";
+    }
+    isPlaying = !isPlaying;
+}
+
+if (musicBtn) {
+    musicBtn.onclick = toggleMusic;
+}
+
+// Musik otomatis jalan saat klik pertama di mana saja
+document.addEventListener('click', () => {
+    if (!isPlaying && music) {
+        music.play().then(() => {
+            isPlaying = true;
+            musicBtn.innerText = "🎵";
+        }).catch(err => console.log("Autoplay dicegah browser"));
+    }
+}, { once: true });
+
+// --- 3. LOGIKA GAME ---
 function initGame() {
     const btnReveal = document.getElementById('btn-reveal');
     const btnNext = document.getElementById('btn-next');
     const answerSection = document.getElementById('answer-section');
     const qImg = document.getElementById('question-img');
-    const fImg = document.getElementById('full-img');
     const aName = document.getElementById('answer-name');
 
-    // Load Soal
     function loadSoal() {
         if (dataSoal[indexSekarang]) {
             qImg.src = dataSoal[indexSekarang].icon;
@@ -35,7 +68,6 @@ function initGame() {
 
     loadSoal();
 
-    // Event Tombol
     btnReveal.onclick = () => {
         answerSection.classList.remove('hidden');
         btnReveal.classList.add('hidden');
@@ -67,15 +99,13 @@ function showEnding() {
     
     document.getElementById('btn-reset').onclick = () => {
         indexSekarang = 0;
-        // Kembalikan HTML ke struktur awal
         gameCard.innerHTML = `
             <h1>TEBAK UI APLIKASI</h1>
             <p id="sub-title">Potongan UI ini milik aplikasi apa?</p>
             <div class="card">
-                <img id="question-img" src="" alt="Tebak ini apa">
+                <img id="question-img" src="" alt="">
                 <div id="answer-section" class="hidden">
                     <h2 id="answer-name">NAMA APLIKASI</h2>
-                    <img id="full-img" src="" alt="Full UI Screenshot">
                 </div>
             </div>
             <div class="controls">
@@ -83,34 +113,32 @@ function showEnding() {
                 <button id="btn-next" class="hidden">NEXT SOAL</button>
             </div>
         `;
-        initGame(); // Jalankan ulang logika tombol
+        initGame();
     };
 }
 
-// Jalankan logika pertama kali
 initGame();
 
-// --- 3. LOGIKA BACKGROUND MANTUL ---
+// --- 4. LOGIKA BACKGROUND MANTUL ---
 const container = document.getElementById('bg-bounce-container');
-const bgImages = [
-    '1.png', 
-    '2.png'
-]; 
-
+const bgImages = ['1.png', '2.png']; 
 const items = [];
-for (let i = 0; i < 12; i++) {
-    const img = document.createElement('img');
-    img.src = bgImages[Math.floor(Math.random() * bgImages.length)];
-    img.className = 'bouncing-item';
-    container.appendChild(img);
-    items.push({
-        el: img,
-        x: Math.random() * (window.innerWidth - 80),
-        y: Math.random() * (window.innerHeight - 80),
-        dx: (Math.random() - 0.5) * 4,
-        dy: (Math.random() - 0.5) * 4,
-        w: 80, h: 80
-    });
+
+if (container) {
+    for (let i = 0; i < 12; i++) {
+        const img = document.createElement('img');
+        img.src = bgImages[Math.floor(Math.random() * bgImages.length)];
+        img.className = 'bouncing-item';
+        container.appendChild(img);
+        items.push({
+            el: img,
+            x: Math.random() * (window.innerWidth - 80),
+            y: Math.random() * (window.innerHeight - 80),
+            dx: (Math.random() - 0.5) * 4,
+            dy: (Math.random() - 0.5) * 4,
+            w: 80, h: 80
+        });
+    }
 }
 
 function updateBounce() {
@@ -125,30 +153,3 @@ function updateBounce() {
     requestAnimationFrame(updateBounce);
 }
 updateBounce();
-const music = document.getElementById('bgm');
-const musicBtn = document.getElementById('btn-music');
-let isPlaying = false;
-
-// Fungsi untuk play/pause musik
-function toggleMusic() {
-    if (isPlaying) {
-        music.pause();
-        musicBtn.innerText = "🔇";
-    } else {
-        music.play();
-        musicBtn.innerText = "🎵";
-    }
-    isPlaying = !isPlaying;
-}
-const music = document.getElementById('bgm');
-music.volume = 0.5;
-musicBtn.onclick = toggleMusic;
-
-// Bonus: Musik otomatis jalan saat user mulai berinteraksi dengan game
-document.addEventListener('click', () => {
-    if (!isPlaying) {
-        music.play();
-        isPlaying = true;
-        musicBtn.innerText = "🎵";
-    }
-}, { once: true }); // 'once: true' artinya cuma jalan sekali pas klik pertama
