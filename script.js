@@ -1,11 +1,11 @@
 // --- 1. DATA SOAL ---
 const dataSoal = [
     { 
-        icon: 'LINK_RAW_GITHUB_DISCORD_ICON', 
+        icon: 'dcmic.png', 
         nama: 'DISCORD' 
     },
     { 
-        icon: 'LINK_RAW_GITHUB_INSTAGRAM_ICON', 
+        icon: 'igchat.png', 
         nama: 'INSTAGRAM' 
     },
     { 
@@ -16,13 +16,34 @@ const dataSoal = [
         icon: 'wamic.png', 
         nama: 'WHATSAPP' 
     },
-    { 
-        icon: 'LINK_RAW_GITHUB_SPOTIFY_ICON', 
-        nama: 'SPOTIFY' 
+     { 
+        icon: 'dcchat.png', 
+        nama: 'DISCORD' 
     },
+     { 
+        icon: 'igtelp.png', 
+        nama: 'INSTAGRAM' 
+    },
+
     { 
         icon: 'zoomchat.png', 
         nama: 'ZOOM' 
+    }, 
+    { 
+        icon: 'watelp.png', 
+        nama: 'WHATSAPP' 
+    },
+     { 
+        icon: 'discordtelp.png', 
+        nama: 'DISCORD' 
+    },
+     { 
+        icon: 'wachat.png', 
+        nama: 'WHATSAPP' 
+    },
+     { 
+        icon: 'arsipwa.png', 
+        nama: 'WHATSAPP' 
     },
 ];
 
@@ -104,7 +125,7 @@ function showEnding() {
     gameCard.innerHTML = `
         <div style="animation: fadeIn 0.8s;">
             <h1 style="font-size: 32px;">MISSION COMPLETE! 🎓</h1>
-            <p style="margin: 20px 0; line-height: 1.6;">Gokil! Lo berhasil tebak semua UI.<br>Siap jadi mahasiswa SPICE!</p>
+            <p style="margin: 20px 0; line-height: 1.6;">Terimakasih sudah berkunjung ke booth SPICE!!.<br>SEMOGA JADI MAHASISWA UI!!</p>
             <button id="btn-reset">MAIN LAGI</button>
         </div>
     `;
