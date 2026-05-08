@@ -2,17 +2,14 @@
 const dataSoal = [
     { 
         icon: 'LINK_RAW_GITHUB_DISCORD_ICON', 
-        full: 'LINK_RAW_GITHUB_DISCORD_FULL', 
         nama: 'DISCORD' 
     },
     { 
         icon: 'LINK_RAW_GITHUB_INSTAGRAM_ICON', 
-        full: 'LINK_RAW_GITHUB_INSTAGRAM_FULL', 
         nama: 'INSTAGRAM' 
     },
     { 
         icon: 'LINK_RAW_GITHUB_SPOTIFY_ICON', 
-        full: 'LINK_RAW_GITHUB_SPOTIFY_FULL', 
         nama: 'SPOTIFY' 
     }
 ];
@@ -32,7 +29,6 @@ function initGame() {
     function loadSoal() {
         if (dataSoal[indexSekarang]) {
             qImg.src = dataSoal[indexSekarang].icon;
-            fImg.src = dataSoal[indexSekarang].full;
             aName.innerText = dataSoal[indexSekarang].nama;
         }
     }
@@ -129,3 +125,30 @@ function updateBounce() {
     requestAnimationFrame(updateBounce);
 }
 updateBounce();
+const music = document.getElementById('bgm');
+const musicBtn = document.getElementById('btn-music');
+let isPlaying = false;
+
+// Fungsi untuk play/pause musik
+function toggleMusic() {
+    if (isPlaying) {
+        music.pause();
+        musicBtn.innerText = "🔇";
+    } else {
+        music.play();
+        musicBtn.innerText = "🎵";
+    }
+    isPlaying = !isPlaying;
+}
+const music = document.getElementById('bgm');
+music.volume = 0.5;
+musicBtn.onclick = toggleMusic;
+
+// Bonus: Musik otomatis jalan saat user mulai berinteraksi dengan game
+document.addEventListener('click', () => {
+    if (!isPlaying) {
+        music.play();
+        isPlaying = true;
+        musicBtn.innerText = "🎵";
+    }
+}, { once: true }); // 'once: true' artinya cuma jalan sekali pas klik pertama

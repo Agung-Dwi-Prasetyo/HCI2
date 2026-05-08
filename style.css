@@ -26,12 +26,47 @@ body {
 
 .bouncing-item {
     position: absolute;
-    width: 300px;
+    width: 250px;
     height: auto;
     background: transparent !important;
     filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
 }
+#btn-music {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+    
+    /* Ukuran tombol */
+    width: 60px;
+    height: 60px;
+    
+    /* Warna & Bentuk */
+    background: #FFE300;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    
+    /* TRIK BIAR TENGAH PAS: */
+    display: flex;
+    justify-content: center; /* Tengah horizontal */
+    align-items: center;     /* Tengah vertikal */
+    
+    /* Atur ukuran emojinya */
+    font-size: 24px;
+    
+    /* Hapus padding bawaan kalau ada */
+    padding: 0;
+    line-height: 0;
+    
+    /* Efek shadow biar lebih pop up */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+}
 
+#btn-music:hover {
+    transform: scale(1.1);
+}
 .game-container {
     background: rgba(10, 31, 94, 0.9);
     padding: 30px;
