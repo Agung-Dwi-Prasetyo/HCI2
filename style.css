@@ -1,55 +1,72 @@
+:root {
+    --ui-blue-royal: #1946BA;
+    --ui-yellow-bright: #FFE300;
+    --ui-white: #FFFFFF;
+}
+
 body {
-    background-color: #121212;
-    color: white;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--ui-blue-royal);
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Penting agar elemen tidak tembus keluar */
+    font-family: 'Arial', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
 }
 
-.game-container {
-    text-align: center;
-    width: 90%;
-    max-width: 500px;
+/* Container Background */
+#bg-bounce-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Di belakang game */
+    pointer-events: none;
 }
+
+/* Gaya Elemen yang Mantul */
+.bouncing-item {
+    position: absolute;
+    width: 80px; /* Ukuran gambar karakter */
+    height: auto;
+    opacity: 0.8;
+}
+
+/* Style Kartu Game (Tetap di tengah) */
+.game-container {
+    background: rgba(25, 70, 186, 0.9); /* Sedikit transparan agar elemen belakang terlihat */
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    z-index: 10;
+    width: 350px;
+}
+
+h1 { color: var(--ui-yellow-bright); text-transform: uppercase; }
 
 .card {
-    background: #1e1e1e;
+    background: white;
     padding: 20px;
     border-radius: 15px;
-    border: 2px solid #333;
-    margin-bottom: 20px;
+    margin: 20px 0;
 }
 
-#question-img {
-    width: 100px; /* Sengaja dibuat kecil/potongan */
-    height: 100px;
-    object-fit: contain;
-    background: #2a2a2a;
-    padding: 10px;
-    border-radius: 10px;
-}
+#question-img { width: 80px; border-radius: 50%; border: 3px solid var(--ui-yellow-bright); }
+#full-img { width: 100%; border-radius: 10px; margin-top: 10px; }
 
-#full-img {
-    width: 100%;
-    margin-top: 15px;
-    border-radius: 10px;
-}
-
-.hidden {
-    display: none;
-}
+.hidden { display: none; }
 
 button {
     padding: 12px 25px;
-    border: none;
     border-radius: 25px;
-    cursor: pointer;
+    border: none;
     font-weight: bold;
-    font-size: 16px;
+    cursor: pointer;
 }
 
-#btn-reveal { background-color: #5865F2; color: white; }
-#btn-next { background-color: #3ba55c; color: white; }
+#btn-reveal { background: #000; color: #fff; }
+#btn-next { background: var(--ui-yellow-bright); color: #000; }
